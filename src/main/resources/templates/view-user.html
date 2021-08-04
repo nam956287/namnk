@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>LIST OF RESPONSIBILITIES</h2>
+            <p><a class="btn btn-primary" href="/">ADD USER</a></p>
+            <p><label th:text="'Hello: '+ ${session.USERNAME }"></label><a href="/logout"> Logout</a></a></p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th style="width: 280px;">Address</th>
+                        <th>Photo</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item: ${USERS}">
+                        <td th:text="${item.username}"></td>
+                        <td th:text="${item.password}"></td>
+                        <td th:text="${item.fullname}"></td>
+                        <td th:text="${item.email}"></td>
+                        <td th:text="${item.telephone}"></td>
+                        <td th:text="${item.address}"></td>
+                        <td th:text="${item.photo}"></td>
+                        <td><a class="btn btn-primary btn-sm" th:href="@{'/edit/'+ ${item.username}}">Edit</a> |
+                         <a class="btn btn-danger btn-sm" th:href="@{'/delete/'+ ${item.username}}">Del</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
